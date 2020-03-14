@@ -1,21 +1,17 @@
-import React from "react";
+import React from 'react';
+import styled from 'styled-components';
+import GlobalStyle from './styles/global';
+
+const Title = styled.h1`
+  color: #f00;
+  font-size: 32px;
+`;
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <GlobalStyle />
+      <Title>Hello World</Title>
     </div>
   );
 }

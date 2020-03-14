@@ -8,8 +8,7 @@
   },
   "env": {
     "browser": true,
-    "jest": true,
-    "eslint": true
+    "jest": true
   },
   "extends": ["react-app", "airbnb"],
   "plugins": ["import", "jsx-a11y", "react"],
