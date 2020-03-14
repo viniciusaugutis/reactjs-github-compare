@@ -1,18 +1,14 @@
 import React from 'react';
-import styled from 'styled-components';
-import GlobalStyle from './styles/global';
 
-const Title = styled.h1`
-  color: #f00;
-  font-size: 32px;
-`;
+import GlobalConfig from './styles/global';
+import Main from './pages/Main';
 
 function App() {
   return (
-    <div className="App">
-      <GlobalStyle />
-      <Title>Hello World</Title>
-    </div>
+    <>
+      <GlobalConfig />
+      <Main />
+    </>
   );
 }
 
