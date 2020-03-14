@@ -1,3 +1,20 @@
+Aplicação em ReactJS para listagem de repositórios do Github
+
+## Tecnologias
+
+- ReactJS
+- Styled Components
+- Moment
+- Axios
+- Webpack e babel
+
+## Scripts
+
+### `yarn dev`
+
+### `yarn test`
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
