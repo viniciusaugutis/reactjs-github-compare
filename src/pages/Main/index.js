@@ -13,10 +13,12 @@ export default class Main extends Component {
     repositories: [],
     repositoryInput: '',
     repositoryError: false,
+    repositoryLoading: false,
   };
 
   handleAddRepository = async e => {
     e.preventDefault();
+    this.setState({ repositoryLoading: true });
     try {
       const { data: repository } = await api.get(
         `repos/${this.state.repositoryInput}`
@@ -29,6 +31,8 @@ export default class Main extends Component {
       });
     } catch (err) {
       this.setState({ repositoryError: true });
+    } finally {
+      this.setState({ repositoryLoading: false });
     }
   };
 
@@ -46,7 +50,13 @@ export default class Main extends Component {
             value={this.state.repositoryInput}
             onChange={e => this.setState({ repositoryInput: e.target.value })}
           />
-          <button type="submit">OK</button>
+          <button type="submit">
+            {this.state.repositoryLoading ? (
+              <i className="fa fa-spinner fa-pulse" />
+            ) : (
+              'Ok'
+            )}
+          </button>
         </Form>
         <CompareList repositories={this.state.repositories} />
       </Container>
