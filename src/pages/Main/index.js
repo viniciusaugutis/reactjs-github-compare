@@ -4,6 +4,7 @@ import { Container, Form } from './styles';
 import './Main.scss';
 
 import CompareList from '../../components/CompareList';
+import api from '../../services/api';
 
 export default class Main extends Component {
   state = {
@@ -307,14 +308,30 @@ export default class Main extends Component {
         subscribers_count: 6642,
       },
     ],
+    repositoryInput: '',
+  };
+
+  handleAddRepository = async e => {
+    e.preventDefault();
+    try {
+      const response = await api.get(`repos/${this.state.repositoryInput}`);
+      this.setState({
+        repositories: [...this.state.repositories, response.data],
+      });
+    } catch (err) {}
   };
 
   render() {
     return (
       <Container>
         <img src={logo} alt="Github compare" className="img-logo" />
-        <Form>
-          <input type="text" placeholder="usuário/repositório" />
+        <Form onSubmit={this.handleAddRepository}>
+          <input
+            type="text"
+            placeholder="usuário/repositório"
+            value={this.state.repositoryInput}
+            onChange={e => this.setState({ repositoryInput: e.target.value })}
+          />
           <button type="submit">OK</button>
         </Form>
         <CompareList repositories={this.state.repositories} />
