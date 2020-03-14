@@ -12,6 +12,7 @@ export default class Main extends Component {
   state = {
     repositories: [],
     repositoryInput: '',
+    repositoryError: false,
   };
 
   handleAddRepository = async e => {
@@ -24,15 +25,21 @@ export default class Main extends Component {
       repository.lastCommit = moment(repository.pushed_at).fromNow();
       this.setState({
         repositories: [...this.state.repositories, repository],
+        repositoryError: false,
       });
-    } catch (err) {}
+    } catch (err) {
+      this.setState({ repositoryError: true });
+    }
   };
 
   render() {
     return (
       <Container>
         <img src={logo} alt="Github compare" className="img-logo" />
-        <Form onSubmit={this.handleAddRepository}>
+        <Form
+          withError={this.state.repositoryError}
+          onSubmit={this.handleAddRepository}
+        >
           <input
             type="text"
             placeholder="usuário/repositório"
