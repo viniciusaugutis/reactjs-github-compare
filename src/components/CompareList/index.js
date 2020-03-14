@@ -25,7 +25,7 @@ const CompareList = ({ repositories }) => (
             {repository.open_issues_count} <small>issues</small>
           </li>
           <li>
-            {repository.pushed_at} <small>last commit</small>
+            {repository.lastCommit} <small>last commit</small>
           </li>
         </ul>
       </Repository>
@@ -39,7 +39,7 @@ CompareList.propTypes = {
     PropTypes.shape({
       id: PropTypes.number,
       name: PropTypes.string,
-      owner: PropTypes.Shape({
+      owner: PropTypes.shape({
         login: PropTypes.string,
         avatar_url: PropTypes.string,
       }),
